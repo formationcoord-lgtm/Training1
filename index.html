@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="mt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ŻAK Malta Training 1 : Rooted</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+
+    :root {
+      --color-dark: #2c3e50;          /* rich dark blue */
+      --color-mid: #2980b9;           /* vibrant medium blue */
+      --color-highlight: #e67e22;     /* warm coral/orange */
+      --color-bg-light: #ecf0f1;      /* light cool-gray */
+      --color-bg-dark: #34495e;       /* deep slate blue */
+      --font-serif: 'Merriweather', serif; 
+      --font-sans: 'Georgia', serif;
+      --radius: 12px;
+      --shadow-light: rgba(0,0,0,0.1);
+      --shadow-medium: rgba(0,0,0,0.3);
+      --shadow-strong: rgba(0,0,0,0.4);
+      --transition-ease: 0.4s ease;
+    }
+
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(to bottom, var(--color-bg-light) 0%, var(--color-bg-dark) 100%);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: var(--color-dark);
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--color-highlight);
+      text-decoration: none;
+      transition: color var(--transition-ease);
+    }
+    a:hover, a:focus {
+      color: #f39c12;
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .container {
+      margin: 30px auto;
+      padding: 40px 5%;
+      max-width: 960px;
+      background: #ffffff;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 32px var(--shadow-medium);
+      border: 1px solid #d67c22;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .header-logos {
+      justify-content: center;
+      margin-bottom: 28px;
+      display: flex;
+    }
+
+    .header-logos a {
+      display: inline-block;
+      filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.10));
+      cursor: pointer;
+      transition: transform var(--transition-ease);
+    }
+
+    .header-logos a:hover,
+    .header-logos a:focus {
+      transform: scale(1.12);
+      outline: none;
+    }
+
+    .header-logos img {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 4px 8px;
+      box-shadow: 0 3px 10px var(--shadow-light);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      color: var(--color-highlight);
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      margin-bottom: 10px;
+      user-select: none;
+      line-height: 1.15;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    }
+
+    .heading-text {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: var(--color-mid);
+      font-weight: 900;
+      letter-spacing: 2.4px;
+      user-select: none;
+      margin-top: 2px;
+    }
+
+    .erasmus-text {
+      font-size: clamp(0.9rem, 1.9vw, 1.1rem);
+      color: var(--color-mid);
+      margin-top: 8px;
+      font-style: italic;
+      letter-spacing: 2px;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .image-container {
+      width: 90%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      border-radius: var(--radius);
+      box-shadow: 0 14px 38px var(--shadow-light);
+      overflow: hidden;
+      margin: 30px auto 24px;
+      background: #ffffff;
+      position: relative;
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius);
+      user-select: none;
+      pointer-events: none;
+      display: block;
+    }
+
+    figure figcaption {
+      margin: 12px auto 0;
+      font-style: italic;
+      color: #536374;
+      font-size: 1rem;
+      text-align: center;
+      max-width: 900px;
+      user-select: none;
+      padding: 0 5%;
+    }
+
+    .bottom-band {
+      max-width: 95%;
+      margin: 0 auto 50px;
+      font-style: italic;
+      color: #5a6d8c;
+      text-align: center;
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      padding: 14px 5%;
+      border-top: 2px solid #f39c12;
+      font-weight: 500;
+      user-select: none;
+      box-sizing: border-box;
+      line-height: 1.55;
+    }
+    .bold-text {
+      font-weight: 900;
+      font-family: var(--font-serif);
+    }
+
+    .features {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .feature {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 30px 24px;
+      box-shadow: inset 0 0 20px rgba(230,230,230,0.95);
+      flex: 1 1 300px;
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.28s ease;
+      cursor: default;
+      color: var(--color-dark);
+    }
+
+    .feature:hover,
+    .feature:focus-within {
+      box-shadow: 0 14px 32px rgba(230, 126, 34, 0.6);
+      outline: none;
+    }
+
+    .feature h2 {
+      font-family: var(--font-serif);
+      color: var(--color-highlight);
+      border-bottom: 3px solid #f39c12;
+      padding-bottom: 10px;
+      margin: 0 0 20px;
+      font-size: clamp(1.5rem, 2vw, 2.1rem);
+      user-select: none;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    }
+
+    .feature ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+      line-height: 1.5;
+      flex-grow: 1;
+      color: var(--color-dark);
+    }
+
+    .feature ul li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 16px;
+    }
+
+    .feature ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #f39c12;
+      font-size: 1.7rem;
+      line-height: 1;
+      top: 3px;
+    }
+
+    .feature figure {
+      margin: 24px 0 0;
+      text-align: center;
+      border: none;
+      box-shadow: none;
+      background: none;
+    }
+
+    .feature figure img {
+      border-radius: var(--radius);
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 7px 22px rgba(0, 0, 0, 0.2);
+      transition: transform var(--transition-ease), box-shadow var(--transition-ease);
+      cursor: pointer;
+    }
+
+    .feature figure img:hover,
+    .feature figure img:focus {
+      transform: scale(1.07);
+      box-shadow: 0 10px 34px var(--shadow-strong);
+      outline: none;
+    }
+
+    .feature figcaption {
+      font-style: italic;
+      color: #7a6a4f;
+      font-size: 1rem;
+      margin-top: 10px;
+      user-select: none;
+    }
+
+    .facilitator-section {
+      background-color: #ffffff;
+      color: var(--color-dark);
+      width: 90%;
+      max-width: 960px;
+      margin: 50px auto;
+      padding: 30px 5%;
+      border-radius: var(--radius);
+      box-shadow: 0 12px 30px var(--shadow-light);
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .facilitator-container {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      justify-content: center;
+    }
+
+    .facilitator-portrait {
+      width: 180px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px var(--shadow-light);
+      user-select: none;
+    }
+
+    .facilitator-bio {
+      flex: 1;
+      min-width: 250px;
+      max-width: 600px;
+      text-align: left;
+      color: var(--color-dark);
+    }
+
+    .facilitator-bio h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      margin-top: 0;
+      color: var(--color-highlight);
+      font-weight: 700;
+      user-select: none;
+      line-height: 1.1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .facilitator-bio p {
+      font-size: clamp(1rem, 1.7vw, 1.15rem);
+      line-height: 1.6;
+      margin-top: 12px;
+      color: var(--color-dark);
+    }
+
+    .facilitator-activity {
+      margin-top: 20px;
+      text-align: center;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+      background: var(--color-bg-light);
+      width: 90%;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .facilitator-activity img {
+      width: 100%;
+      height: auto;
+      display: block;
+      user-select: none;
+    }
+
+    .facilitator-activity figcaption {
+      padding: 18px 12px;
+      font-style: italic;
+      font-size: 1rem;
+      color: #536374;
+      user-select:none;
+    }
+
+    .deadline-section {
+      background: #ffffff;
+      padding: 30px 5%;
+      max-width: 960px;
+      margin: 65px auto 52px;
+      border-radius: var(--radius);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      gap: 20px;
+      box-shadow: 0 6px 20px var(--shadow-light);
+      color: var(--color-dark);
+    }
+
+    .deadline-info {
+      max-width: 700px;
+      font-family: var(--font-sans);
+      color: var(--color-dark);
+    }
+
+    .deadline-label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: #555;
+      user-select: none;
+      letter-spacing: 1.7px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .deadline-date {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin: 6px 0 15px 0;
+      color: var(--color-highlight);
+      user-select: text;
+      line-height: 1.1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .highlight-date {
+      color: var(--color-highlight);
+    }
+
+    .deadline-info p {
+      margin: 10px 0;
+      font-size: 1.12rem;
+      color: var(--color-dark);
+      line-height: 1.4;
+      user-select: text;
+    }
+
+    .apply-button {
+      background-color: var(--color-highlight);
+      color: #fff;
+      padding: 16px 32px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      user-select: none;
+      white-space: nowrap;
+      transition: background-color var(--transition-ease), box-shadow 0.25s ease;
+      cursor: pointer;
+      min-width: 180px;
+      text-align: center;
+      margin-top: 10px;
+      flex-shrink: 0;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(230,126,34,0.85);
+    }
+
+    .apply-button:hover,
+    .apply-button:focus {
+      background-color: #f39c12;
+      outline: none;
+      box-shadow: 0 0 12px 4px #fab95a;
+      color:#2c3e50;
+    }
+
+    .page-footer {
+      background-color: #2c3e50;
+      color: #d6d9dc;
+      display: flex;
+      justify-content: space-between;
+      max-width: 960px;
+      margin: 0 auto 36px;
+      padding: 28px 5%;
+      border-radius: var(--radius);
+      font-family: var(--font-sans);
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex: 1 1 280px;
+      min-width: 280px;
+    }
+
+    .footer-logo {
+      width: 56px;
+      height: auto;
+      user-select: none;
+    }
+
+    .footer-text {
+      font-weight: 700;
+      font-size: 1.35rem;
+      line-height: 1.1;
+      color: #f39c12;
+    }
+
+    .footer-right {
+      flex: 1 1 220px;
+      min-width: 220px;
+      font-size: 1rem;
+      user-select: text;
+      text-align: left;
+      color: #d6d9dc;
+    }
+
+    .footer-right h3 {
+      margin-top: 0;
+      font-weight: 700;
+      color: #f39c12;
+      letter-spacing: 1.1px;
+      user-select: none;
+    }
+
+    .footer-right p {
+      margin: 6px 0;
+    }
+
+    .footer-right a {
+      color: #f39c12;
+      text-decoration: none;
+      transition: color var(--transition-ease);
+    }
+
+    .footer-right a:hover,
+    .footer-right a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .footer-center {
+      flex: 1 1 100%;
+      text-align: center;
+      font-style: italic;
+      margin-top: 24px;
+      font-weight: 600;
+      color: #f39c12;
+      user-select: none;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background-color: var(--color-highlight);
+      color: #ffffff;
+      padding: 14px 18px;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--color-highlight);
+      border: none;
+      user-select: none;
+      display: none;
+      z-index: 9999;
+      transition: background-color var(--transition-ease);
+    }
+
+    #back-to-top:hover,
+    #back-to-top:focus {
+      background-color: #f39c12;
+      outline: none;
+      box-shadow: 0 0 15px 5px #fab95a;
+    }
+
+    @media (max-width: 760px) {
+      .container { padding: 30px 5%; margin: 20px auto; }
+      h1 { font-size: 2.4rem; }
+      .header-logos img { height: 45px; padding: 3px 5px; }
+      .features { flex-direction: column; margin-bottom: 36px; gap: 24px; }
+      .feature { max-width: 100%; }
+      .bottom-band { font-size: 1.1rem; padding: 14px 5%; }
+      .image-container { height: auto; aspect-ratio: unset; max-height: 300px; width: 95%; margin: 24px auto 20px; }
+      .deadline-section { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .apply-button { min-width: 100%; text-align: center; }
+      .page-footer { flex-direction: column; text-align: center; align-items: center; gap: 28px; padding: 28px 5%; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; letter-spacing: 1.2px; }
+      .header-logos img { height: 38px; padding: 2px 4px; }
+      .erasmus-text, .heading-text { font-size: 1rem; letter-spacing: 1.2px; }
+      .bottom-band { font-size: 1rem; padding: 12px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container" role="main">
+
+    <header aria-label="Training header with ŻAK logo and title">
+      <div class="header-logos" role="img" aria-label="ŻAK organizational logo">
+        <a href="https://zakmalta.org" target="_blank" rel="noopener noreferrer" aria-label="ŻAK Malta website">
+          <img src="ZAKlog.png" alt="ŻAK Malta logo" />
+        </a>
+        <a href="https://youth.gov.mt" target="_blank" rel="noopener noreferrer" aria-label="Agenzija Żgħażagħ website">
+          <img src="Agenzija.png.webp" alt="Agenzija Żgħażagħ logo" />
+        </a>
+      </div>
+
+      <h1>ŻAK Malta Training 1 : Rooted</h1>
+      <p class="heading-text">24 - 26 ta' Settembru 2027
+      </p>
+      <p class="erasmus-text"> ŻAK House, Birkirkara Malta</p>
+    </header>
+
+    <div class="image-container" aria-label="Training photo">
+      <img src="RootedGroup.jpeg" alt="Community building and youth leadership training" />
+    </div>
+    <figure>
+      <figcaption>Ritratt mit-training tas-sena l-oħra fejn kellna parteċipanti min 5 ċentri differenti....</figcaption>
+    </figure>
+
+    <section class="bottom-band" aria-live="polite" style="font-style: normal;">
+      <p>L-ewwel Training Course taż-ŻAK għaż-żgħażagħ</p>
+      <p>Dan it-training ser jgħina niskopru aktar lilna nfusna bħala wlied maħbuba tal-Missier, u nifhmu li Hu tagħna l-qawwa li nħobbu.
+        Ser jgħina niskopru ukoll l--identità tagħna bħala membri tal-AK- l-
+essenza tal-preżenza tagħna f’din il-missjoni. </p>
+    </section>
+
+<section class="features" aria-label="Training learning objectives and experience" style="max-width: 1000px; margin: 0 auto;">
+  <article class="feature" tabindex="0" style="white-space: pre-line; font-size: clamp(1rem, 1.6vw, 1.15rem); max-width: 900px; margin: 0 auto;">
+    <h2 style="color: var(--color-highlight); font-family: var(--font-serif); font-size: clamp(1.5rem, 2vw, 2rem); margin-bottom: 20px; text-align: center;">
+      Permezz ta dan it-training ser nifhmu aktar:
+    </h2>
+    1) xi tfisser li tkun ta’ servizz fl-AK.<br/>
+    2) il-proċess li nikbru fl-erba’ aspetti: l-interiorità, il-fraternità, l-ekkleżjalità u r-responsabbiltà.<br/>
+    3) il-prinċipji bażiċi tal-etika li jgħinuna nifhmu u nħarsu d-dinjità ta’ kull persuna.
+  </article>
+</section>
+
+
+
+  </main>
+
+  <section class="facilitator-section" aria-labelledby="testimonies-title">
+    <h2 id="testimonies-title" style="color: var(--color-highlight); text-shadow: 1px 1px 3px rgba(0,0,0,0.4); font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.3rem); margin-top: 0; font-weight: 700; user-select: none; text-align: center; margin-bottom: 40px;">
+      Testimonji mill-Parteċipanti
+    </h2>
+
+    <div style="max-width: 900px; margin: 0 auto;">
+      <article style="display: flex; gap: 20px; margin-bottom: 32px; align-items: center; border-left: 4px solid var(--color-highlight); padding-left: 16px;">
+        <img src="P1030300.JPG" alt="Maria" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" />
+        <blockquote style="font-style: italic; color: #5a6e8d; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.5; user-select: text; margin: 0;">
+          “Dan it-training... ”
+
+          <footer style="margin-top: 8px; font-weight: 700; color: var(--color-mid);">— Melchior, ŻAK Mosta participated in Training 1 Rooted 2026</footer>
+        </blockquote>
+      </article>
+
+      <article style="display: flex; gap: 20px; margin-bottom: 32px; align-items: center; border-left: 4px solid var(--color-highlight); padding-left: 16px;">
+        <img src="JuliaV.JPG" alt="Jason" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" />
+        <blockquote style="font-style: italic; color: #5a6e8d; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.5; user-select: text; margin: 0;">
+          “Dan it-training... ”
+          <footer style="margin-top: 8px; font-weight: 700; color: var(--color-mid);">— Julia Vella, ŻAK Imġarr, Training 1 Rooted 2026</footer>
+        </blockquote>
+      </article>
+
+      <article style="display: flex; gap: 20px; margin-bottom: 0; align-items: center; border-left: 4px solid var(--color-highlight); padding-left: 16px;">
+        <img src="Faith2.jpg" alt="Sarah" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" />
+        <blockquote style="font-style: italic; color: #5a6e8d; font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.5; user-select: text; margin: 0;">
+          “L-esperjenza ....”
+          <footer style="margin-top: 8px; font-weight: 700; color: var(--color-mid);">— Faith, ŻAK Birżebbuġa, Training 1 Rooted 2026</footer>
+        </blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section class="deadline-section" aria-labelledby="leader-prep-title" style="margin-top: 40px;">
+    <div class="deadline-info">
+      <span class="deadline-label">Leaders Application:</span>
+      <h2 id="leader-prep-title" class="deadline-date">Inħeġġiġkom tapplikaw sabiex tagħtu kontribut għal dan it-training</h2>
+      <p>Kull min lesta dan it-training, huwa kruċjali mmens li jagħtina daqqa t'id </p>
+      <a href="https://forms.gle/rjpX9UMTqPezD7Nu5" class="apply-button" role="button" aria-label="Leader Application Form" target="_blank" rel="noopener noreferrer">Leader Application</a>
+    </div>
+  </section>
+
+  <section class="deadline-section" aria-labelledby="deadline-title">
+    <div class="deadline-info">
+      <span class="deadline-label">Participant Application: </span>
+      <h2 id="deadline-title" class="deadline-date">Applika sal- <span class="highlight-date">15 ta' April, 2027</span></h2>
+      <p>Jekk jogħġobkom applikaw mil-iktar fis u rrispettaw id-deadline</p>
+      <p>💰 Prezz: €40 (kollox inkluż) 
+
+      Min għandu problema bil-flus inħeġġuħ ikellem lili/Presidenza</p>
+    </div>
+
+    <a href="https://forms.gle/Lm2gu6eQXJEkSu7P6" class="apply-button" role="button" aria-label="Apply to ŻAK Malta Youth Leadership Training" target="_blank" rel="noopener noreferrer">Participant Application</a>
+  </section>
+
+  <footer class="page-footer" role="contentinfo">
+    <div class="footer-left">
+      <img src="ZAKlog.png" alt="ŻAK logo" class="footer-logo" />
+      <div class="footer-text">
+        ŻAK<br/>
+        Żgħażagħ Azzjoni Kattolika
+      </div>
+    </div>
+
+    <div class="footer-right" aria-label="Contact information">
+      <h3>Contact</h3>
+      <p>Andreas Muscat</p>
+      <p><a href="mailto:formation.coord@zakmalta.org">formation.coord@zakmalta.org</a></p>
+      <p>+356 77719240</p>
+    </div>
+
+    <div class="footer-center">
+      Narawkom waqt it-Training!
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+
+  <script>
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) backToTopBtn.style.display = 'block';
+      else backToTopBtn.style.display = 'none';
+    });
+    backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+</body>
+</html>
